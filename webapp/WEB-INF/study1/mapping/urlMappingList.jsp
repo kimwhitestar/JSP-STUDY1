@@ -25,7 +25,7 @@
 <p><br></p>
 <div class="text-center container">
 	<h2>전체 회원 목록</h2>
-	<table>
+	<table class="table table-border">
 			<tr>
 				<th>번호</th><th>아이디</th><th>성명</th><th>포인트</th><th>최종방문일</th><th>방문횟수</th>
 			</tr>
@@ -38,7 +38,7 @@
 				<td><%=vo.getLastDate()%></td>
 				<td><%=vo.getvCount()%></td>
 			</tr>
-<% } %>
+<%	} %>
 			<tr><td colspan="6" class="p-0"></td></tr>
 	</table>
   <p><br></p>
