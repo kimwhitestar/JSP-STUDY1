@@ -19,7 +19,7 @@ public class LoginDAO {
 	
 	//생성시 DB Connection 연결 처리
 	public LoginDAO() {
-		String url = "jdbc:mysql://localhost:3306/javagreen03";
+		String url = "jdbc:mysql://localhost:3306/javagreen";
 		String user = "root";
 		String password = "1234";
 		try {
@@ -140,7 +140,7 @@ public class LoginDAO {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();//pk 1건 획득
 			
-			if (rs.next()) {
+			while (rs.next()) {
 				vo = new LoginVO();
 				vo.setIdx(rs.getInt("idx"));
 				vo.setMid(rs.getString("mid"));
@@ -225,6 +225,24 @@ public class LoginDAO {
 			pstmt.setString(2, vo.getName());
 			pstmt.setString(3, vo.getMid());
 			res = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			System.out.println("SQL 에러 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	public int checkAdmin(String mid, String pwd) {
+		int res = 0;
+		try {
+			sql = "select * from login where mid = ? and pwd = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			pstmt.setString(2, pwd);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) res = 1;
 		} catch(SQLException e) {
 			System.out.println("SQL 에러 : " + e.getMessage());
 		} finally {
