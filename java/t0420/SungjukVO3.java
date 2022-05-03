@@ -1,7 +1,5 @@
 package t0420;
 
-import java.util.Arrays;
-
 public class SungjukVO3 {
 	private String name;
 	private String gender;
@@ -13,12 +11,11 @@ public class SungjukVO3 {
 	private int tot;
 	private double avg;
 	private String grade;
-	
+		
 	public SungjukVO3() {}
 	
 	public SungjukVO3(String name, String gender, String no, String hakyun, int kor, int eng, int mat, int tot, double avg,
 			String grade) {
-		super();
 		this.name = name;
 		this.gender = gender;
 		this.no = no;
@@ -90,11 +87,5 @@ public class SungjukVO3 {
 	}
 	public void setGrade(String grade) {
 		this.grade = grade;
-	}
-
-	@Override
-	public String toString() {
-		return "SungjukVO3 [name=" + name + ", gender=" + gender + ", no=" + no + ", hakyun=" + hakyun + ", kor=" + kor
-				+ ", eng=" + eng + ", mat=" + mat + ", tot=" + tot + ", avg=" + avg + ", grade=" + grade + "]";
 	}
 }
